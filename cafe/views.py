@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import get_template
 import random
-from cafe.models import Product
+from cafe.models import Product, Category
 
 # Create your views here.
 def index(request):
@@ -53,10 +53,26 @@ def coffe5(request):
 
 def coffe6(request):
 
+
+    js = 'window.alert(this.innerHTML)'
+
+    style = '''
+        <style>
+            table{
+                width: 100%;
+                border: 3px green solid;
+            }
+            td{
+                border: 1px gray solid;
+                text-align: center;
+            }
+        </style>
+    '''
+
     product = Product.objects.all()
     table = "<tr><td>Product No</td><td>Product Name</td><td>Product Price</td><td>Product Size</td></tr>"
     for p in product:
-        table += f'<tr><td>{p.pid}</td><td>{p.name}</td><td>{p.price}</td><td>{p.size}</td></tr>'
+        table += f'<tr><td>{p.pid}</td><td onclick={js}>{p.name}</td><td>{p.price}</td><td>{p.size}</td></tr>'
 
     html = f'''
     <!DOCTYPE html>
@@ -66,6 +82,47 @@ def coffe6(request):
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        {style}
+    </head>
+    <body>
+        <table>{table}</table>
+    </body>
+    </html>
+    '''
+
+    return HttpResponse(html)
+
+def coffe7(request):
+
+    js = 'window.alert(this.innerHTML)'
+
+    style = '''
+        <style>
+            table{
+                width: 100%;
+                border: 3px green solid;
+            }
+            td{
+                border: 1px gray solid;
+                text-align: center;
+            }
+        </style>
+    '''
+
+    category = Category.objects.all()
+    table = "<tr><td>Product No</td><td>Product Name</td></tr>"
+    for c in category:
+        table += f'<tr><td>{c.cid}</td><td onclick={js}>{c.name}</td></tr>'
+
+    html = f'''
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        {style}
     </head>
     <body>
         <table>{table}</table>
