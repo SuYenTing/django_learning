@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'css/mystyle.css' %}" rel="stylesheet" type="text/css"></link>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>產品名稱</th>
+            <th>產品價格</th>
+            <th>產品大小</th>
+        </tr>
+        {% for p in product %}
+        <tr>
+            <td><a href="/coffee9/{{p.pid}}">{{p.name}}</a></td>
+            <td>{{p.price}}</td>
+            <td>{{p.size}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

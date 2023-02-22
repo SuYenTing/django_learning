@@ -131,3 +131,19 @@ def coffe7(request):
     '''
 
     return HttpResponse(html)
+
+
+
+def coffe8(request):
+
+    product = Product.objects.all()
+    template = get_template('coffee/coffee8.html')
+    template = template.render({'product': product})
+    return HttpResponse(template)    
+
+def coffe9(request, pid):
+
+    product = Product.objects.get(pid=pid)
+    template = get_template('coffee/coffee9.html')
+    template = template.render({'product': product})
+    return HttpResponse(template)    
