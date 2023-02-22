@@ -147,3 +147,6 @@ def coffe9(request, pid):
     template = get_template('coffee/coffee9.html')
     template = template.render({'product': product})
     return HttpResponse(template)    
+
+def coffe10(request):
+    return render(request, 'coffee/coffee10.html')
