@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'css/mystyle.css' %}" rel="stylesheet" type="text/css"></link>
+</head>
+<body>
+
+    <h1>Coffee Purchase System</h1>
+    <p>Coffee Name:</p>
+    <p><input type="text" id="name" placeholder="Enter Coffee Name"></input></p>
+    <p>Coffee Price:</p>
+    <p><input type="number" id="price" placeholder="Enter Pice"></input></p>
+    <p>Coffee QTY:</p>
+    <p><input type="number" id="qty" placeholder="Enter Coffee QTY"></input></p>
+    <button onclick="onsale()">送出資料</button><br>
+    <div id="demo"></div>
+    <br>
+    <img src="{% static 'images/cup4.png' %}" id='cup'>
+
+    <script src="{% static 'js/myjs.js' %}"></script>
+    <script src="{% static 'js/yourjs.js' %}"></script>
+</body>
+</html>
