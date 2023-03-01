@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 import random
 from cafe.models import Product, Category
+from datetime import datetime
 
 # Create your views here.
 def index(request):
@@ -150,3 +151,16 @@ def coffe9(request, pid):
 
 def coffe10(request):
     return render(request, 'coffee/coffee10.html')
+
+def coffe11(request):
+
+    coffee = [
+        {'image': 'arabica.png', 'name': 'Arabica'},
+        {'image': 'liberia.png', 'name': 'Liberia'},
+        {'image': 'robusta.png', 'name': 'Robusta'},
+        ]
+    sec = datetime.now().second
+    
+    template = get_template('coffee/coffee11.html')
+    template = template.render(locals())
+    return HttpResponse(template)    
