@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import get_template
 import random
-from cafe.models import Product, Category
+from cafe.models import Product, Category, UserInfo
 from datetime import datetime
+
+from django.shortcuts import redirect
 
 # Create your views here.
 def index(request):
@@ -163,4 +165,53 @@ def coffe11(request):
     
     template = get_template('coffee/coffee11.html')
     template = template.render(locals())
-    return HttpResponse(template)    
+    return HttpResponse(template)  
+
+def mycookie01(request):
+
+    template = get_template('cookie/mycookie01.html')
+
+    if request.session.test_cookie_worked:
+        message = 'support!!'
+    else:
+        message = 'not support!!'
+
+    template = template.render(locals())
+    return HttpResponse(template)
+
+
+def mycookie02(request):
+    if request.method == 'GET':
+        return render(request, 'cookie/mycookie02.html')
+    
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    userobj = UserInfo.objects.filter(
+        username=username, password=password).first()
+    print(userobj)
+
+    if not userobj:
+        return redirect('/mycookie02/')
+    else:
+        myredirect = redirect('/mycookie03/')
+        myredirect.set_cookie('is_login', True)
+        myredirect.set_cookie('username', username)
+        myredirect.set_cookie('password', password)
+        return myredirect
+        
+def mycookie03(request):
+    status = request.COOKIES.get('is_login')
+
+    if not status:
+        return redirect('/mycookie02/')
+    
+    username = request.COOKIES.get('username')
+    password = request.COOKIES.get('password')
+
+    return render(request, 'cookie/mycookie03.html', locals())
+
+
+
+
+
+
