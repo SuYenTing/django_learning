@@ -211,6 +211,14 @@ def mycookie03(request):
     return render(request, 'cookie/mycookie03.html', locals())
 
 
+def mycookie04(request):
+
+    myRedirect = redirect('/mycookie02/')
+    myRedirect.delete_cookie('is_login')
+    myRedirect.delete_cookie('username')
+    myRedirect.delete_cookie('password')
+
+    return myRedirect
 
 
 
