@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from cafe.views import index, coffee, slogan, index2, coffe1, coffe2, coffe3, coffe4, coffe5, coffe6, coffe7, coffe8, coffe9, coffe10, coffe11, mycookie01, mycookie02, mycookie03, mycookie04
+from cafe.views import index, coffee, slogan, index2, coffe1, coffe2, coffe3, coffe4, coffe5, coffe6, coffe7, coffe8, coffe9, coffe10, coffe11, mycookie01, mycookie02, mycookie03, mycookie04, mysession01, mysession02, mysession03
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,4 +43,8 @@ urlpatterns += [
     path('mycookie02/', mycookie02),
     path('mycookie03/', mycookie03),
     path('mycookie04/', mycookie04),
+
+    path('mysession01/', mysession01),
+    path('mysession02/', mysession02),
+    path('mysession03/', mysession03),
 ]

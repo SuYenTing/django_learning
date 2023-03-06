@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Cookie{% endblock %}
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <p><input type="text" placeholder="Enter Username" name="username" required></p>
+    <p><input type="password" placeholder="Enter Username" name="password" required></p>
+    <p><button type="submit">Login</button></p>
+</form>
+
+
+{% endblock %}
